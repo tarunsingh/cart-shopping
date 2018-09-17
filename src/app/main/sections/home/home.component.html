@@ -1,0 +1,5 @@
+<div class="home bg-light">
+  <app-product-list [products]="products" (cartEvent)="addToCart($event)"></app-product-list>
+</div>
+
+<router-outlet></router-outlet>

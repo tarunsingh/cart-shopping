@@ -1,0 +1,92 @@
+<ng-template #cartTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Your Shopping Cart</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="cart-wrap" *ngIf="cartItems.length > 0">
+      <div class="items">
+        <div class="item head">
+          <div class="area"></div>
+          <div class="name">Particulars</div>
+          <div class="qty">Quantity</div>
+          <div class="price">Price</div>
+        </div>
+        <div class="item" *ngFor="let item of cartItems">
+            <div class="area" [style.backgroundImage]="'url('+ item.data.imageUrl +')'"></div>
+            <div class="name">
+              <div>{{item.data.name}}</div> <br/>
+              <div class="btn btn-link btn-sm" (click)="deleteItem(item)">Remove</div>
+            </div>
+            <div class="qty">
+              <span class="minus" (click)="removeItem(item)">-</span>
+              <span class="val">{{item.count}}</span>
+              <span class="plus" (click)="addItem(item)">+</span>
+            </div>
+            <div class="price">&#8377;{{item.data.price}}</div>
+        </div>
+        <div class="item head last">
+          <div class="area"></div>
+          <div class="name">Total</div>
+          <div class="qty"></div>
+          <div class="price">&#8377; {{getSum()}}</div>
+        </div>
+      </div>
+      <div class="shipping form-inline">
+        <div class="form-group mb-1">
+          <label for="pincodetext" class="sr-only">Pincode</label>
+          <input type="text" readonly class="form-control-plaintext" id="pincodetext" value="Enter Pincode">
+        </div>
+        <div class="form-group mb-1">
+          <label for="pincode" class="sr-only">EnterPincode</label>
+          <input type="text" [(ngModel)]="pincode" class="form-control" id="pincode" [appPinCode]="pincode"
+                 placeholder="xxxxxx" (blur)="showDelivery()">
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="DeliveryMsg">
+          Product is available for above pincode area.
+        </div>
+        <div class="alert alert-danger " role="alert" *ngIf="showError">
+          Invalid pin code.
+        </div>
+      </div>
+      <div class="shipping">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios"
+                 id="exampleRadios1" [value]="1" [(ngModel)]="shippingOption.value">
+          <label class="form-check-label" for="exampleRadios1">
+            Express delivery (Extra &#8377;200)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios"
+                 id="exampleRadios2" [value]="2" [(ngModel)]="shippingOption.value">
+          <label class="form-check-label" for="exampleRadios2">
+            Scheduled delivery (Extra &#8377;100)
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios"
+                 id="exampleRadios3" [value]="3" [(ngModel)]="shippingOption.value" checked>
+          <label class="form-check-label" for="exampleRadios3">
+            Normal Delivery
+          </label>
+        </div>
+        <div class="alert alert-info" role="alert">
+          <span *ngIf="shippingOption.value == 1">Arrives within 24 hours.</span>
+          <span *ngIf="shippingOption.value == 2">Arrives as per your timing request</span>
+          <span *ngIf="shippingOption.value == 3">Arrives in 5-10 days</span>
+        </div>
+      </div>
+    </div>
+    <div class="empty" *ngIf="cartItems.length === 0">
+      <h4>Your cart is empty.</h4> <br />
+      <a class="btn btn-primary" routerLink="['']">Continue shopping.</a>
+    </div>
+  </div>
+  <div class="modal-footer" *ngIf="cartItems.length > 0">
+    <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/payment">Checkout</button>
+  </div>
+</ng-template>
+

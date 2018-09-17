@@ -1,0 +1,289 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  font-size: 14px;
+  user-select: none;
+}
+body {
+  color: #777;
+}
+.home {
+  padding: 56px 0;
+}
+
+.navbar {
+  width: 100%;
+  z-index: 1;
+  position: fixed;
+  background: #1a9bff;
+  color: white;
+}
+
+.navbar a {
+  color: white;
+}
+
+.products {
+}
+.product {
+  padding: 15px;
+}
+.product .wrapper {
+  border: 1px solid #e6e6e6;
+  background: white;
+  border-radius: 4px;
+}
+
+.product .image {
+  width: 100%;
+  padding-bottom: 120%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.cart {
+  background: #1a9bff;
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 40px;
+  cursor: pointer;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: bottom 0.2s ease-out;
+}
+
+.product:hover .cart {
+  bottom: 0;
+}
+
+.product .detail {
+  padding: 12px;
+}
+
+.product .name {
+  font-size: 1.2rem;
+}
+
+.product .price {
+  font-size: 0.9rem;
+  color: black;
+}
+
+.cart-notifier {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url("/assets/images/cart.svg") no-repeat center;
+  background-size: contain;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.cart-notifier span {
+  position: relative;
+  top: -8px;
+  right: -22px;
+  color: red;
+  font-weight: bold;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+}
+
+.cart-modal {
+  margin: 0;
+  float: right;
+  width: 100%;
+  height: 100%;
+}
+
+.modal .cart-modal {
+  transform: translate(0, 0);
+  transition: transform 0.100s;
+}
+
+.modal.fade.show .cart-modal {
+  transform: translate(0, 0);
+}
+
+.modal.fade .cart-modal {
+  transform: translate(500px, 0);
+}
+
+.cart-modal .modal-content {
+  height: 100%;
+  border-radius: 0;
+  border: none;
+}
+
+@media (min-width: 992px) {
+  .cart {
+    bottom: -45px;
+  }
+  .cart-modal {
+    width: 500px;
+  }
+}
+
+.login-modal .modal-header,
+.cart-modal .modal-header {
+  background: #1a9bff;
+  color: white;
+  border-radius: 0;
+}
+
+.cart-modal .modal-title {
+  font-size: 1.2rem;
+  line-height: 20px;
+}
+.items {
+  font-size: 0;
+}
+.item {
+  padding: 5px 0;
+}
+
+.item .area {
+  width: 10%;
+  padding-bottom: 10%;
+  border-radius: 4px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border: 1px solid #e6e6e6;
+}
+.item div {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 14px;
+}
+.item .name {
+  width: 50%;
+  padding: 0 5px;
+}
+.item .qty {
+  width: 25%;
+  font-size: 0;
+}
+.item .price {
+  width: 15%;
+  text-align: right;
+  color: black;
+  font-size: 16px;
+}
+.qty span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.item span {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #1a9bff;
+  font-size: 30px;
+  line-height: 21px;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+.item .plus,
+.item .minus {
+  cursor: pointer;
+}
+.item span.val {
+  background: white;
+  color: #777;
+  font-size: 14px;
+  width: 25px;
+}
+
+.item.head div {
+  color: #777;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.item.head .area {
+  padding-bottom: 0;
+  border: none;
+}
+.item.head.last {
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.cart-modal .empty {
+  text-align: center;
+  transform: translatey(50%);
+}
+
+.cart-modal .modal-body {
+  max-height: 100%;
+  overflow: auto;
+}
+
+.cart-modal .modal-footer {
+  padding: 0;
+}
+
+.shipping {
+  position: relative;
+  padding: 10px 52px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.shipping .form-group {
+  width: 50%;
+}
+.shipping .alert {
+  width: 100%;
+}
+
+.navbar-text.login {
+  cursor: pointer;
+}
+
+.login-modal .modal-body {
+  padding: 2rem;
+}
+
+.login-modal .form-control {
+  margin: 20px auto;
+  width: 320px;
+}
+
+.login-modal .modal-footer input {
+  margin: 0 auto;
+  padding: 10px 35px;
+}
+
+.shipping .form-check {
+  margin: 10px 0;
+}
+
+.login-modal {
+  position: relative;
+  top: 50%;
+}
+.modal .login-modal {
+  transform: translate(0, 50%);
+  transition: transform 0.100s;
+}
+
+.modal.fade.show .login-modal {
+  transform: translateY(-50%) !important;
+}
+
+.modal.fade .login-modal {
+  transform: translate(0, 0);
+}

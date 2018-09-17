@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div class="image" [style.backgroundImage]="'url('+ product.imageUrl +')'">
+    <div class="cart" (click)="addToCart()">Add to cart</div>
+  </div>
+  <div class="detail">
+    <div class="name">{{ product.name }}</div>
+    <div class="price">&#8377;{{ product.price }}</div>
+  </div>
+</div>
